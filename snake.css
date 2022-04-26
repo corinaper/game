@@ -1,0 +1,10 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+#set-start{
+    position: fixed;
+    top: 50vh;
+    left: 50vw;
+}
