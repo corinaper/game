@@ -8,8 +8,21 @@
     <link rel="stylesheet" href="snake.css">
 </head>
 <body>
+    <div class="marginTopPart">
+    <h1>Snake Game</h1>
+    <div class="flex">
+        <p>Score: <span>0</span></p>
+        <div class="flex">
+            <p>Lives</p>
+            <img src="/images/heart.png" alt="">
+            <img src="/images/heart.png" alt="">
+            <img src="/images/heart.png" alt="">
+        </div>
+    </div>
+    </div>
     <canvas id="canvas"></canvas>
-    
+
+    <script src="jsFiles/food.js"></script>
     <script src="jsFiles/snakeBody.js"></script>
     <script src="jsFiles/snakeHead.js"></script>
     <script src="jsFiles/game.js"></script>
