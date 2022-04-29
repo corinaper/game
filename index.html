@@ -4,26 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bunny Game</title>
     <link rel="stylesheet" href="snake.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="marginTopPart">
-    <h1>Snake Game</h1>
+    <h1>The Bunny Game</h1>
     <div class="flex">
-        <p>Score: <span>0</span></p>
-        <div class="flex">
-            <p>Lives</p>
-            <img src="/images/heart.png" alt="">
-            <img src="/images/heart.png" alt="">
-            <img src="/images/heart.png" alt="">
-        </div>
+        <p>Score: <span id="score">0</span></p>
     </div>
     </div>
+    
+    <div class="flexCenter">
     <canvas id="canvas"></canvas>
+    </div>
+    <div class="blackScreen">
 
+    </div>
     <script src="jsFiles/food.js"></script>
-    <script src="jsFiles/snakeBody.js"></script>
+    <script src="jsFiles/fox.js"></script>
     <script src="jsFiles/snakeHead.js"></script>
     <script src="jsFiles/game.js"></script>
     <script src="jsFiles/index.js"></script>
