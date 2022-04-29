@@ -84,7 +84,7 @@ class Game {
 		startDiv.id = 'set-start';
 		startButton.innerText = 'Feed Me';
 		startButton.id = 'button';
-		startImage.src = '/images/rabbit1.png';
+		startImage.src = './images/rabbit1.png';
 		startImage.id = 'moving-rabbit';
 		startButton.onclick = () => {
 			this.screen = 1;
@@ -181,7 +181,7 @@ class Game {
 		text.innerText = 'The bunny is dead';
 		text.id = 'game-over';
 		startButton.id = 'button';
-		startImage.src = '/images/dead bunny.png';
+		startImage.src = './images/dead bunny.png';
 		startImage.id = 'moving-rabbit';
 
 		startButton.onclick = () => {

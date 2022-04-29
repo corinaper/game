@@ -20,13 +20,13 @@ class SnakeHead {
 		this.heightDown = 74;
 		//HeadRight
 		this.imgRight = new Image();
-		this.imgRight.src = '/images/rabbit right.png';
+		this.imgRight.src = './images/rabbit right.png';
 		
 		
 		this.widthRight = 58;
 		//HeadLeft
 		this.imgLeft = new Image();
-		this.imgLeft.src = '/images/rabbit left.png';
+		this.imgLeft.src = './images/rabbit left.png';
 		
 		this.spriteNumber = 0;
 		this.spriteCount = 4
