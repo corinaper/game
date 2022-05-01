@@ -7,10 +7,15 @@ class Game {
 		this.snakeHead = null;
 		this.snakeBody = null;
 		this.snakeFullBody = [];
-		this.food = null;
+		this.food = [];
 		this.frameId = null;
-		this.foxes = [];
+		this.foxes = []; 
+        
 	}
+ audioCollect = new Audio("sounds/zapsplat_multimedia_game_sound_digital_fast_collect_item_002_55830.mp3")
+ mainAudio = new Audio("sounds/mixkit-at-the-barn-789.mp3")
+overAudio = new Audio("sounds/zapsplat_multimedia_game_sound_bell_digital_synth_bright_harsh_negative_001_40476.mp3")
+   
 
 	init() {
 		this.setCanvasToFullScreen();
@@ -35,8 +40,10 @@ class Game {
 	}
 
 	setCanvasToFullScreen() {
-		this.ctx.canvas.height = window.innerHeight - 170;
-		this.ctx.canvas.width = window.innerWidth;
+        const image = document.querySelector(".flexCenter img")
+
+		this.ctx.canvas.height = image.height - 160;
+		this.ctx.canvas.width = image.width - 200;
 	}
 
 	setEventHandlers() {
@@ -77,10 +84,12 @@ class Game {
 
 	displaySplashStart() {
 		const startDiv = document.createElement('div');
-		startDiv.style.width = this.ctx.canvas.width + 'px';
-		startDiv.style.height = this.ctx.canvas.height + 'px';
+		startDiv.style.width = document.querySelector(".flexCenter img").width
+		startDiv.style.height = document.querySelector(".flexCenter img").height + 20 + "px"
 		const startButton = document.createElement('button');
 		const startImage = document.createElement('img');
+        const text = document.createElement('p');
+        text.innerText = "Feed the bunny without being catched by the foxes"
 		startDiv.id = 'set-start';
 		startButton.innerText = 'Feed Me';
 		startButton.id = 'button';
@@ -89,25 +98,35 @@ class Game {
 		startButton.onclick = () => {
 			this.screen = 1;
 			this.start();
-			console.log(startDiv);
 			startDiv.remove();
+          
+        
 		};
 
-		document.body.appendChild(startDiv);
+		document.querySelector(".flexCenter").appendChild(startDiv);
 
 		startDiv.appendChild(startImage);
+        startDiv.appendChild(text);
 		startDiv.appendChild(startButton);
 	}
+
+   
 	play() {
+        this.mainAudio.play()
 		if (this.rabbitAteFood()) {
-			this.food.generateRandomPosition();
 			this.points += 1;
+            
 			document.getElementById('score').innerText = this.points;
+            if(this.food.length<4){
+                this.food.push(new Food(this.ctx))
+            } else this.food.pop()
+            this.audioCollect.play()
+            
 		}
 
 		this.snakeHead.draw(this.frameId);
 
-		this.food.draw();
+		this.food.forEach(carrot => carrot.draw());
 
 		if (this.frameId % 250 == 0 ) {
 			if(Math.random()<0.4)this.foxes.push(new Fox(this.ctx));
@@ -133,13 +152,18 @@ class Game {
 	}
 
 	rabbitAteFood() {
-		if (
-			this.food.positionX < this.snakeHead.positionX &&
-			this.snakeHead.positionX < this.food.positionX + this.food.width &&
-			(this.food.positionY < this.snakeHead.positionY &&
-				this.snakeHead.positionY < this.food.positionY + this.food.height)
+        let bunnyAteFood = false;
+        
+		this.food.forEach((carrot)=>{if (
+			carrot.positionX < this.snakeHead.positionX &&
+			this.snakeHead.positionX < carrot.positionX + carrot.width &&
+			(carrot.positionY < this.snakeHead.positionY &&
+				this.snakeHead.positionY < carrot.positionY + carrot.height)
 		)
-			return true;
+        bunnyAteFood = true;if (bunnyAteFood)carrot.generateRandomPosition()})
+        
+
+		return bunnyAteFood;
 	}
 
 	foxAteRabbit() {
@@ -156,23 +180,25 @@ class Game {
 	}
 
 	reset() {
-		this.food = new Food(this.ctx);
-		this.food.generateRandomPosition();
+		this.food.push(new Food(this.ctx));
+		this.food.forEach(carrot => carrot.generateRandomPosition());
 		this.points = 0;
 		document.getElementById('score').innerText = 0;
 		this.snakeHead = new SnakeHead(this.ctx);
 	}
 
-	gameOver(frameId) {
+	gameOver() {
 		this.fox = null;
-		this.food = null;
+		this.food = [];
 		this.snakeHead = null;
         this.foxes = [];
 
-		const startDiv = document.createElement('div');
-		startDiv.style.width = this.ctx.canvas.width + 'px';
-		startDiv.style.height = this.ctx.canvas.height + 'px';
+        this.mainAudio.pause()
+        this.overAudio.play()
 
+		const startDiv = document.createElement('div');
+		startDiv.style.width = document.querySelector(".flexCenter img").width + 'px';
+		startDiv.style.height = document.querySelector(".flexCenter img").height + 'px';
 		startDiv.style.width = this.ctx.canvas.width;
 		const text = document.createElement('p');
 		const startButton = document.createElement('button');
@@ -191,7 +217,7 @@ class Game {
 			startDiv.remove();
 		};
 
-		document.body.appendChild(startDiv);
+		document.querySelector(".flexCenter").appendChild(startDiv);
 		startDiv.appendChild(startImage);
 		startDiv.appendChild(text);
 		startDiv.appendChild(startButton);

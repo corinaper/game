@@ -2,12 +2,12 @@ class Fox{
     constructor(ctx){
         this.ctx = ctx
         this.img = new Image()
-        this.img.src = "images/fox (1).png"
+        this.img.src = "images/fox.png"
 
         this.positionX = 0
         this.positionY = 0
         this.width = 80
-        this.height = 80
+        this.height = 100
     }
 
     generateRandomPosition(){

@@ -41,33 +41,33 @@ class SnakeHead {
 	animate(frameId) {
 		switch (this.direction) {
 			case 'up':
-				if (this.positionY < 0 - this.imgUp.height) {
-					this.positionY = this.ctx.canvas.height;
-				} else this.positionY -= this.speed;
+				if (this.positionY > 5) {
+					this.positionY -= this.speed;
+				}
 				this.animateMoves(frameId)
 				break;
 			case 'down':
-				if (this.positionY - this.imgRight.height > this.ctx.canvas.height) {
-					this.positionY = 0 - this.imgDown.height / 2;
-				} else this.positionY += this.speed;
+				if (this.positionY + this.imgRight.height/2 < this.ctx.canvas.height) {
+					this.positionY += this.speed;
+				} 
 				this.animateMoves(frameId)
 				break;
 			case 'left':
-				if (this.positionX < 0 - this.imgLeft.width) {
-					this.positionX = this.ctx.canvas.width;
-				} else this.positionX -= this.speed;
+				if (this.positionX > 5) {
+					this.positionX -= this.speed;
+				} 
 				this.animateMoves(frameId)
 				break;
 			case 'right':
-				if (this.positionX - this.imgRight.width > this.ctx.canvas.width) {
-					this.positionX = 0;
-				} else this.positionX += this.speed;
+				if (this.positionX + 5 < this.ctx.canvas.width) {
+					this.positionX += this.speed;
+				}
 				this.animateMoves(frameId)
 				break;
 			default:
-				if (this.positionY < 0 + this.imgUp.height) {
-					this.positionY = this.ctx.canvas.height - this.imgUp.height;
-				} else this.positionY -= this.speed;
+				if (this.positionY > 0 - this.imgUp.height) {
+					this.positionY -= this.speed;
+				} 
 		}
 	}
 
