@@ -181,7 +181,7 @@ class Game {
 		text.innerText = 'The bunny is dead';
 		text.id = 'game-over';
 		startButton.id = 'button';
-		startImage.src = './images/dead bunny.png';
+		startImage.src = 'images/dead bunny.png';
 		startImage.id = 'moving-rabbit';
 
 		startButton.onclick = () => {
