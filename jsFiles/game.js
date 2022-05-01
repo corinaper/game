@@ -36,7 +36,7 @@ class Game {
 
 	setCanvasToFullScreen() {
 		this.ctx.canvas.height = window.innerHeight - 170;
-		this.ctx.canvas.width = window.innerWidth - 150;
+		this.ctx.canvas.width = window.innerWidth;
 	}
 
 	setEventHandlers() {
@@ -167,6 +167,7 @@ class Game {
 		this.fox = null;
 		this.food = null;
 		this.snakeHead = null;
+        this.foxes = [];
 
 		const startDiv = document.createElement('div');
 		startDiv.style.width = this.ctx.canvas.width + 'px';

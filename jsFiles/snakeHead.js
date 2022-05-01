@@ -9,24 +9,24 @@ class SnakeHead {
 		this.ctx = ctx;
 		//Headup
 		this.imgUp = new Image();
-		this.imgUp.src = './images/rabbit back.png';
+		this.imgUp.src = 'images/rabbit back.png';
 		this.width = 58;
 		this.height = 60;
 		//HeadDown
 		this.imgDown = new Image();
-		this.imgDown.src = './images/rabbit front.png';
+		this.imgDown.src = 'images/rabbit front.png';
 		
 		this.widthDown = 62;
 		this.heightDown = 74;
 		//HeadRight
 		this.imgRight = new Image();
-		this.imgRight.src = './images/rabbit right.png';
+		this.imgRight.src = 'images/rabbit right.png';
 		
 		
 		this.widthRight = 58;
 		//HeadLeft
 		this.imgLeft = new Image();
-		this.imgLeft.src = './images/rabbit left.png';
+		this.imgLeft.src = 'images/rabbit left.png';
 		
 		this.spriteNumber = 0;
 		this.spriteCount = 4

@@ -2,7 +2,7 @@ class Fox{
     constructor(ctx){
         this.ctx = ctx
         this.img = new Image()
-        this.img.src = "./images/fox (1).png"
+        this.img.src = "images/fox (1).png"
 
         this.positionX = 0
         this.positionY = 0

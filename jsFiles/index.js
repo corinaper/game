@@ -5,3 +5,5 @@ const game = new Game(ctx);
 
 window.onload=()=>game.init() 
 
+
+
