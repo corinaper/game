@@ -9,7 +9,7 @@ body{
 }
 
 #canvas {
-    background-image: url(/images/grass.jpg);
+    background-image: url(images/grass.jpg);
     position: relative;
 }
 
