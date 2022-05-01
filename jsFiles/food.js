@@ -2,7 +2,7 @@ class Food{
     constructor(ctx){
         this.ctx = ctx
         this.img = new Image()
-        this.img.src = "./images/cabbage.png"
+        this.img.src = "images/cabbage.png"
 
         this.positionX = 0
         this.positionY = 0
